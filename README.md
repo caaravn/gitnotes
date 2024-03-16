@@ -28,8 +28,9 @@
 
      git branch <bname> --> it will create branch 
      git checkout <bname>  -> switch from one to another branch
-
+                Above two (OR) below one (same)
      git checkout -b <bname>  -> create and switch to that branch
+     
      git branch -d <bname>    -> delete branch (-d delete)
      git branch    -> list the branches which are on local git
      git branch -a  -> it will list branches from both git and github. (-a   all branches)
