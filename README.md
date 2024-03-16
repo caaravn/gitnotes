@@ -6,12 +6,20 @@
 -> git init -> which helps to convert normal directory to git directory.(which initilise the git congiguration).
 
 -> Git clone -> were we can download entire repository from github to local git
-     git clone <github url> (url -> github repo url)
+     git clone <github url>   (url -> github repo url)
+     
      cd <reponame>  -> go inside directory
+     
      vi filename    -> to create new file (esc->shift:->wq)
+
+     LL            -> List
+     
      git add .      -> . indicates all files
+     
      git commit -m "message" -> (-m is message)
+     
      git push origin branchname  ->push code to github.
+     
      git status  -> to see the status before and after command exection for both add&commit.
 
      git pull origin branchname  ->pull code into local git
