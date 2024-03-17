@@ -3,8 +3,8 @@
 -> Git is local repository which is on you local machine.
 -> Github is centralised repository were you need to login using username/passwd.
 -> In github we can fork or import the code from other github
-        for importing entire repository we use import option
-        for copiying specific branch of the repository we use fork option
+        Import -> it will copy the repository from one github account to another github account
+        Fork   -> it will copy only specific branch master/main from one account to another account 
 
 -> git init -> which helps to convert normal directory to git directory.(which initilise the git congiguration).
 
@@ -23,19 +23,22 @@
      
      git status  -> to see the status before and after command exection for both add&commit.
 
-     git pull origin branchname  ->pull code into local git for latest change
+     git pull origin branchname  -> It helps ypu to pull the latest code changes from github to local git
+
+     git fetch                    -> It helps ypu to pull the latest code changes from github to local git from specific branch
 
 -> git branching ---> Branching will helps developers to work parallely or samintaniously with out any dependency on each other.
          -> when we create any branch we get a default branch called "MAIN"
          Below are the branches were developers create depends on there project
-             Stage  1) feature -> were developer creat and work on there code individually
-             Stage  2) develop/dev/developement-> In this all developer code will merge and quality test happen 
-             Stage  3) main ->were it contains final code application
-             Stage  4) release -> code releasing to customer
+             Stage  1) feature barnch-> were developer create and work on there code individually
+             Stage  2) develop/dev/developement branch-> In this all developer code will merge and quality test happen 
+             Stage  3) main or master branch (default branch)->were it contains final code application
+             Stage  4) release branch -> code releasing to customer
+             Stage  5) hotfix branch -> any minor and immediate change of code
              
          
 
-     git branch <bname> --> it will create branch 
+     git branch <bname> --> to create branch 
      git checkout <bname>  -> switch from one to another branch
                 Above two (OR) below one (same)
      git checkout -b <bname>  -> create and switch to that branch
@@ -65,6 +68,10 @@
 -> .gitignore  --> .gitignore file will helps to skip/avoid the unwanted files while pushing into github.
     vi .girignore --> *.log
 
--> git reset --> to undo the changes/// -> move from current state to previous state.
+-> git reset --> to undo the changes/// -> move from current state to previous state.(one step back)
+
+-> git rebase --> when you are having multiple commits for same branch using rebase we make all those commits into single commit
 
    git reset <filename> 
+   
+   
