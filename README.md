@@ -2,6 +2,9 @@
 -> Git/Github ---> it is source code management tool which helps you to manage the application code.
 -> Git is local repository which is on you local machine.
 -> Github is centralised repository were you need to login using username/passwd.
+-> In github we can fork or import the code from other github
+        for importing entire repository we use import option
+        for copiying specific branch of the repository we use fork option
 
 -> git init -> which helps to convert normal directory to git directory.(which initilise the git congiguration).
 
@@ -15,16 +18,22 @@
      LL            -> List
      
      git add .      -> . indicates all files
-     
      git commit -m "message" -> (-m is message)
-     
      git push origin branchname  ->push code to github.
      
      git status  -> to see the status before and after command exection for both add&commit.
 
-     git pull origin branchname  ->pull code into local git
+     git pull origin branchname  ->pull code into local git for latest change
 
 -> git branching ---> Branching will helps developers to work parallely or samintaniously with out any dependency on each other.
+         -> when we create any branch we get a default branch called "MAIN"
+         Below are the branches were developers create depends on there project
+             Stage  1) feature -> were developer creat and work on there code individually
+             Stage  2) develop/dev/developement-> In this all developer code will merge and quality test happen 
+             Stage  3) main ->were it contains final code application
+             Stage  4) release -> code releasing to customer
+             
+         
 
      git branch <bname> --> it will create branch 
      git checkout <bname>  -> switch from one to another branch
