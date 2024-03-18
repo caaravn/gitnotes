@@ -74,4 +74,11 @@
 
    git reset <filename> 
    
-   
+   -> Setup git in Linux VM
+    sudo yum install git -y
+    ssh-keygen -> enter -> enter-> enter 
+    to get key -> cat /home/ec2-user/.ssh/id_rsa.pub
+    copy the key to github account in settings -> SSH option
+    git clone <repo SSH URL> -> yes -> enter ---> it will start clone.
+
+
