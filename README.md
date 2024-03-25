@@ -144,8 +144,8 @@ Docker Commands:
 --> docker start <containerid>  ------> to start the container
 -> docker stop <containerid>  ------> to stop the container
 -> docker rm <containername> --- delete docker container (make sure container should be in stop state)
--> docker run -it --name <containername> <imagename> /bin/bash ---> to create container and naming it
--> docker commit <containerid> ---- from this we can build new docker image from existing image
+-> docker run -it --name <containername mywish> <imagename> /bin/bash ---> to create container and naming it
+-> docker commit <containerid> <newinage mywish> ---- from this we can build new docker image from existing image
 -> docker logs -f <containername> ----- to see container logs
 -> docker exec -it <containername> sh  ------ to login into container 
 -> exit ----> for coming out from container
