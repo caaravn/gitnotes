@@ -144,13 +144,22 @@ Docker Commands:
 --> docker start <containerid>  ------> to start the container
 -> docker stop <containerid>  ------> to stop the container
 -> docker rm <containername> --- delete docker container (make sure container should be in stop state)
--> docker run -it --name <containername> <imagename> /bin/bash ---> to create container
+-> docker run -it --name <containername> <imagename> /bin/bash ---> to create container and naming it
 -> docker commit <containerid> ---- from this we can build new docker image from existing image
 -> docker logs -f <containername> ----- to see container logs
--> docker exec -it <containername> sh  ------ to login into container
+-> docker exec -it <containername> sh  ------ to login into container 
+-> exit ----> for coming out from container
 -> docker stats <containername> ---- you can see the resource utilization cpu/ram/memory   
 -> docker system prune ---- unused images/containers will be deleted
 -> docker run -it --name <containername> --privileged=true --volumes-from <oldcontainer> <images> /bin/bash 
+
+**docker hub commands** 
+
+docker run <ubantu>  -------> it will pull image from docker hub and creat container too
+
+docker pull <ubantu> --------> it will only pull image from docker hub
+
+
 
 ======================================================================================================================================================================================
 
