@@ -212,23 +212,25 @@ http://IPAddress:9000/         (9000 --- default port for Sonar)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 -> **Download and install sonar on Ubuntu**
 
-sudo mkdir /downloads/sonarqube -p
-sudo cd /downloads/sonarqube
-sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
-sudo unzip sonar-scanner-cli-4.2.0.1873-linux.zip
-sudo mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
-sudo vi /opt/sonar-scanner/conf/sonar-scanner.properties
-         sonar.host.url=http://localhost:9000
-         sonar.sourceEncoding=UTF-8
+**java install**
+sudo apt update
+sudo apt install openjdk-11-jre
 
-sudo vi /etc/profile.d/sonar-scanner.sh
-        #/bin/bash
-        export PATH="$PATH:/opt/sonar-scanner/bin"
+**Maven**
+sudo adduser sonarqube   ---------> adding user
+apt install unzip
+sudo su - sonarqube      ----------> swiching to sonar user
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip *
+ls
+chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+./sonar.sh start
+```
 
-sudo reboot
-sudo source /etc/profile.d/sonar-scanner.sh
+Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
 
-sonar-scanner -v
 
 ===================================================================================================================================================================================
 
