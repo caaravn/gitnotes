@@ -1,3 +1,27 @@
+Linux basic commands
+
+COMANDS retated to packages
+sudo yum insatll <package> -y  -----------> to install package
+sudo su -                      -----------> to convert normal user to root user
+sudo which <package>           -----------> to cross check package
+sudo yum list installed        -----------> to check list of packages
+
+COMANDS retated to directory(folder)
+mkdir <folder name>           ------------> to create folder
+ls or ll                      ------------> to see the list of folder
+cd <folder name>              ------------> to get inside the folder
+cd ..                         ------------> to get to previous folder
+pwd                           -------------> to know the current directory were we are in
+
+COMANDS retated to files
+cat > <file name>              --------------> to create file
+cat <file name>                --------------> for opening created file
+                        (OR)
+vi <file name>                ----------------> creating new file if it already not exist, otherwise opens existing file (creating and opening same command)
+ecs :wq!                      -----------------> for coming out of the file
+rm -rf                        -----------------> to remove or delete
+
+========================================================================================================================================================
 # githubnotes
 -> Git/Github ---> it is source code management tool which helps you to manage the application code.
 -> Git is local repository which is on you local machine.
@@ -111,8 +135,14 @@ Linux:
    -> Sudo yum install maven -y
    -> maven -version
 
--> Make sure execute maven command were the POM file is.
-Sample Repo: https://github.com/Renukadema/Calculator.git 
+Commands for building .war file without using jenkins
+
+mvn clean install
+ll
+cd target
+ll
+wiil see .jar file
+cd .. (for back)
 
 =====================================================================================================================================================================================
 
