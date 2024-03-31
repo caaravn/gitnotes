@@ -110,14 +110,14 @@ rm -rf                        -----------------> to remove or delete
 
 Maven Tool:
 -> Maven is build automation tool
-->Developer with code they keep dependencies and compilers file like    pom.xml file       for java code
-                                                                        package.json file  for nodejs
-                                                                        requirement.txt    for python
-                                                                        project.json       for .net
+->Developer with code they keep dependencies and compilers in a file called build file like    pom.xml file       for java code
+                                                                                               package.json file  for nodejs
+                                                                                               requirement.txt    for python
+                                                                                               project.json       for .net
           
 -> using maven we are going to build the application code written by developers
 -> Example after build java code it will generate target folder and .jar file inside in it (target/***.jar)
-     This .jar file is called as Artifact
+     This .jar file is called as Artifact/Package
 
      Same as above for .NET, PYTHON, NODEJS -------> We get .ZIP file.
                   for java web applications -------> we get .WAR file
@@ -155,7 +155,7 @@ ll
 wiil see .jar file
 cd .. (for back)
 
-
+**after creating the .jar file( artifact) we push the code to package repository tool like Nexus, jfrog**
 
 =====================================================================================================================================================================================
 
