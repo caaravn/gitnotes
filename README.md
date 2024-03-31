@@ -110,17 +110,28 @@ rm -rf                        -----------------> to remove or delete
 
 Maven Tool:
 -> Maven is build automation tool
-->developer keep dependencies and compilers in pom.xml file
+->Developer with code they keep dependencies and compilers file like    pom.xml file       for java code
+                                                                        package.json file  for nodejs
+                                                                        requirement.txt    for python
+                                                                        project.json       for .net
+          
 -> using maven we are going to build the application code written by developers
--> After build it will generate target folder and .jar file inside init (target/***.jar)
+-> Example after build java code it will generate target folder and .jar file inside in it (target/***.jar)
+     This .jar file is called as Artifact
+
+     Same as above for .NET, PYTHON, NODEJS -------> We get .ZIP file.
+                  for java web applications -------> we get .WAR file
+
 -> maven is having lifecycle which contains diff stages/phases
      -> generate resource - Generate required de[pendencies to build application code using maven.
      -> Compile code -- convert code into binary language (machine readable)
      -> Unit test --- Maven will test internally diff test cases
-     -> Package ---- Creating .jar file from the code (copying all the required code into jar)
+     -> Package ---- Creating .jar file from the code (copying all the required code into .jar file)
      -> install ----- Install the .jar on maven server
      -> Deploy ----- Deploy is ntg but upload/deploy the dependencies and .jar files to maven repository.
      -> Clean ----- Claen the existing .jar file and recreate new .jar file.
+
+     
 -> When we download and install maven
      -> .M2 folder ---- were it containes entire configuration of maven.
          settings.xml ---- Maven repo URL then username/password.
@@ -143,6 +154,8 @@ cd target
 ll
 wiil see .jar file
 cd .. (for back)
+
+
 
 =====================================================================================================================================================================================
 
