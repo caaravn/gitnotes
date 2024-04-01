@@ -170,6 +170,7 @@ Docker will only support single application deployment.
     *  systemctl start docker  (will start the docker service).
     *  systemctl enable docker (if we stop the VM docker service also will stop and once VM is start automatically it will start the docker service as well).
     *  systemctl restart docker (to restart the docker service).
+    * sudo usermod -aG docker jenkins ----------------> to add docker to jenkins
 
 -> Docker engine ---> which containes docker config and which heps to run the docker service
 -> Docker Repository --> were you can store the docker images (here we can do pull/push mechanism)
@@ -259,7 +260,7 @@ http://IPAddress:9000/         (9000 --- default port for Sonar)
 sudo apt update
 sudo apt install openjdk-11-jre
 
-**Maven**
+
 sudo adduser sonarqube   ---------> adding user
 apt install unzip
 sudo su - sonarqube      ----------> swiching to sonar user
