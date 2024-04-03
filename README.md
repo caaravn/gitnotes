@@ -305,6 +305,89 @@ Install helm on linux VM:
 - sudo ./get_helm.sh
 
 =========================================================================================================================================================================================
+Kubernetes:
+
+connect to cluster
+  aws eks --update-kubeconfig --region=us-east-1 --name=eks   -> to connect to kubernetes cluster
+
+-> Kubectl get nodes                       -> to see the nodes under kubernetes
+-> kubectl get pods                        -> to see the pods running on cluster
+-> kubectl create namespace <name>         -> to create namespace in kubernetes cluster
+-> kubectl get ns                          -> to see list of namespaces
+-> kubectl describe pod <podname>          -> to describe the pods and check the event logs
+-> kubectl get svc                         -> to get the list of services
+-> kubectl get deployments                 -> to get the list of deployments
+-> kubectl get cm                          -> to get the list of configmaps
+-> kubectl get secrets                     -> to get the list of secrets
+-> kubectl describe secret <name>          -> to see th full info secret
+-> kubectl logs -f <podname>               -> to see the pod logs
+-> kubectl logs -f <podname> -c <containername> -> to the application logs
+-> kubectl delete pod <podname>             -> to restart the pod/container
+-> kubectl edit deployment <deploymentname> -> to edit the deployment for local changes testing
+-> kubectl get PV                           -> to get the list of persistent volumes
+-> kubectl get PVC                          -> to get the list of persistent volume claims
+-> kubectl exec -it <podname> bash          -> to login into container
+-> kubectl apply -f deployment.yaml         -> to execute/create the deployment
+-> kubectl apply -f service.yaml            -> to execute/create the service
+
+what is kubernetes?
+-> which helps you to deploy multiple applications as a containers, auto scaling and manage our applications.
+
+**What is kubernetes components?**
+-> control plane (master node) ----kube API Server, kube Controll manager, kube-scheduler, etcd
+-> worker node --- kubelet, kube-proxy, container runtime.
+
+What is kubernetes pod?
+-> Running as a container on kubernete
+
+**What is deployment in kubernetes?**
+-> Deployment is nothing but converts application as a running container and it should manage the roll back machanism.
+
+**what is kubernetes namespace?**
+-> kubernetes namespace which helps you to seperate the multiple application deployments configurations.
+
+**what is kubernetes services?**
+-> Service load balancer ----- which manages the external acces to kubernetes service
+                               feature of load balancer -> SSL, Virtual Hosting, Ingress Routing -> which helps to route the traffic to kubernetes services.
+-> NodePort ---- which helps to access the application from external world and it expose the Node IP address
+                <NodeIP>:<NodePort>
+-> Cluster IP ---- exposes the service on each node based on internal IP address with in the cluster. 
+
+What is PV and PVC?
+-> PV is persistent volumes stoages available for the cluster.
+->PVC is persistent volume claim storages requested by user for storage which is bound to PV's.
+
+==============================================
+aws eks update -kubeconfig--region us-east-1 --name demo-eks   -----> command for generating secret key of kubernetics which we should give in jenkins credencials
+
+Installation of EKS in linux server
+
+#Install AWS CLI
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 
+sudo yum install unzip
+sudo unzip awscliv2.zip  
+sudo ./aws/install
+aws --version
+
+#Install eksctl on Linux
+
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+
+#Move the extracted binary to /usr/local/bin. 
+
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+
+#Install Kubectl
+
+sudo curl --silent --location -o /usr/local/bin/kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
+sudo chmod +x /usr/local/bin/kubectl
+kubectl version --short --client
+
+#Create EKS cluster using eksctl command
+
+eksctl create cluster --name demo-eks --region us-east-1 --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2
 
 
-  ====
+
