@@ -358,7 +358,8 @@ What is PV and PVC?
 ->PVC is persistent volume claim storages requested by user for storage which is bound to PV's.
 
 ==============================================
-aws eks update -kubeconfig--region us-east-1 --name demo-eks   -----> command for generating secret key of kubernetics which we should give in jenkins credencials
+aws eks update-kubeconfig --region us-east-1 --name demo-eks  -----> command for generating secret key of kubernetics which we should give in jenkins credencials 
+cat <path>
 
 Installation of EKS in linux server
 
@@ -387,7 +388,7 @@ kubectl version --short --client
 
 #Create EKS cluster using eksctl command
 
-eksctl create cluster --name demo-eks --region us-east-1 --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2
+eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2
 
 
 
