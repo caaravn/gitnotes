@@ -1,3 +1,30 @@
+Backend end codes
+ java
+ nodejs
+ python
+ .net
+ Ruby
+
+Front end codes
+ HTML
+ CSS
+ JAVA scripts
+ Angular
+ react.js
+
+*Web servers:
+   Apache HTTP server
+   Apache tomcat (for java based application)
+   NGINX
+   ISS(microsoft)
+
+Developer with code they keep dependencies and compilers in a file called build files like    pom.xml file       for java code
+                                                                                             package.json file  for nodejs
+                                                                                             requirement.txt    for python
+                                                                                             project.json       for .net
+
+==========================================================================================================================================================
+
 Linux basic commands
 
 COMANDS retated to packages
