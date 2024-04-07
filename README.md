@@ -23,6 +23,13 @@ Developer with code they keep dependencies and compilers in a file called build 
                                                                                              requirement.txt    for python
                                                                                              project.json       for .net
 
+Three tire application  
+
+1. web tire (presentation layer) ---> frontend UI code
+2. 
+3. app tire (logic code layer)  ---> banckend code
+4. 
+5. Data base tire
 ==========================================================================================================================================================
 
 Linux basic commands
@@ -143,7 +150,7 @@ Maven Tool:
                                                                                                project.json       for .net
           
 -> using maven we are going to build the application code written by developers
--> Example after build java code it will generate target folder and .jar file inside in it (target/***.jar)
+-> Example after build java code it will generate target folder inside it we have .jar file (target/***.jar)
      This .jar file is called as Artifact/Package
 
      Same as above for .NET, PYTHON, NODEJS -------> We get .ZIP file.
@@ -378,7 +385,16 @@ What is kubernetes pod?
                                feature of load balancer -> SSL, Virtual Hosting, Ingress Routing -> which helps to route the traffic to kubernetes services.
 -> NodePort ---- which helps to access the application from external world and it expose the Node IP address
                 <NodeIP>:<NodePort>
--> Cluster IP ---- exposes the service on each node based on internal IP address with in the cluster. 
+-> Cluster IP ---- exposes the service on each node based on internal IP address with in the cluster.
+
+-> Popular kubernetics distributions
+       -> Kubernetics
+       -> RED HATOpenshift
+       -> Rancher
+       -> EKS
+       -> AKS
+       -> GKE
+       -> Minicube
 
 What is PV and PVC?
 -> PV is persistent volumes stoages available for the cluster.
