@@ -1,3 +1,12 @@
+Three tire application  
+
+1. web tire (presentation layer) ---> frontend UI code ( html,css,js..)
+2. 
+3. app tire (logic code layer)  ---> banckend code (java, nodejs, python..)
+4. 
+5. Data base tire ----> (mysql, mangodb, nosql)
+
+
 Backend end codes
  java
  nodejs
@@ -23,13 +32,7 @@ Developer with code they keep dependencies and compilers in a file called build 
                                                                                              requirement.txt    for python
                                                                                              project.json       for .net
 
-Three tire application  
 
-1. web tire (presentation layer) ---> frontend UI code
-2. 
-3. app tire (logic code layer)  ---> banckend code
-4. 
-5. Data base tire
 ==========================================================================================================================================================
 
 Linux basic commands
