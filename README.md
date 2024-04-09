@@ -410,7 +410,6 @@ cat <path>
 Installation of EKS in linux server
 
 #Install AWS CLI
-
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 
 sudo yum install unzip
 sudo unzip awscliv2.zip  
@@ -418,23 +417,34 @@ sudo ./aws/install
 aws --version
 
 #Install eksctl on Linux
-
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-
 #Move the extracted binary to /usr/local/bin. 
-
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
 
 #Install Kubectl
-
 sudo curl --silent --location -o /usr/local/bin/kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
 sudo chmod +x /usr/local/bin/kubectl
 kubectl version --short --client
 
 #Create EKS cluster using eksctl command
-
 eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2
+
+
+
+YAML files
+pod.yaml
+service.yaml
+deploy.yaml
+configmap.yaml
+secret.yaml
+ingress.yaml
+job.yaml
+namespace.yaml
+
+
+
+
 
 
 
