@@ -142,7 +142,8 @@ rm -rf                        -----------------> to remove or delete
     copy the key to github account in settings -> SSH option
     git clone <repo SSH URL> -> yes -> enter ---> it will start clone.
 
-====================================================================================================================================================================================
+===================================================================================================================================================================================
+
 # Maven
 
 Maven Tool:
@@ -157,7 +158,7 @@ Maven Tool:
      This .jar file is called as Artifact/Package
 
      Same as above for .NET, PYTHON, NODEJS -------> We get .ZIP file.
-                  for java web applications -------> we get .WAR file
+                   for java web applications -------> we get .WAR file
 
 -> maven is having lifecycle which contains diff stages/phases
      -> generate resource - Generate required de[pendencies to build application code using maven.
@@ -194,7 +195,7 @@ cd .. (for back)
 
 **after creating the .jar file( artifact) we push the code to package repository tool like Nexus, jfrog**
 
-=====================================================================================================================================================================================
+===================================================================================================================================================================================
 
 What is Docker?
 Docker is light weight container, were you can build and run your application on docker.
@@ -389,6 +390,7 @@ What is kubernetes pod?
 -> NodePort ---- which helps to access the application from external world and it expose the Node IP address
                 <NodeIP>:<NodePort>
 -> Cluster IP ---- exposes the service on each node based on internal IP address with in the cluster.
+-> extral name-----
 
 -> Popular kubernetics distributions
        -> Kubernetics
@@ -433,9 +435,10 @@ eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node
 
 
 YAML files
+
 pod.yaml
-service.yaml
-deploy.yaml
+service.yaml *
+deploy.yaml *
 configmap.yaml
 secret.yaml
 ingress.yaml
