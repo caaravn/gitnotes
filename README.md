@@ -267,7 +267,7 @@ docker pull <ubantu> --------> it will only pull image from docker hub
 
  refer in ----> Jenkinsfile (same repo)
 
-
+============================================================================================================================================================
  Jenkins pipeline (Declarative pipeline)
 
 1)pipeline
