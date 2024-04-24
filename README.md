@@ -529,6 +529,67 @@ job.yaml
 namespace.yaml
 
 
+*Deploy yaml file*
+
+->Deployments manage the deployment and scaling of a set of pods, usually to run a stateless application.
+->It includes specifications such as the container image, number of replicas
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-web-app
+  template:
+    metadata:
+      labels:
+        app: my-web-app
+    spec:
+      containers:
+      - name: my-web-app-container
+        image: my-web-app:latest
+        ports:
+        - containerPort: 80
+
+
+*Service yaml file*
+
+->Services provide network access to a set of pods, allowing them to communicate with each other and with external clients.
+->It includes specifications for how to expose the pods, such as the port number and type of service (e.g., ClusterIP, NodePort, LoadBalancer)
+->Services can be used to load balance traffic across multiple pod replicas and enable external access to the application.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-web-app-service
+spec:
+  selector:
+    app: my-web-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+
+
+*Configmap*
+
+ConfigMaps are used to store configuration data in key-value pairs or as plain text
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  # Define key-value pairs for your configuration data
+  DATABASE_URL: "mysql://username:password@hostname:port/database"
+  API_KEY: "your_api_key_here"
+  LOG_LEVEL: "debug"
+
+
 
 
 
