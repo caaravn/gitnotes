@@ -519,10 +519,11 @@ eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node
 
 YAML files
 
-pod.yaml
+
 service.yaml *
 deploy.yaml *
-configmap.yaml
+configmap.yaml*
+pod.yaml
 secret.yaml
 ingress.yaml
 job.yaml
