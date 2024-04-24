@@ -328,7 +328,6 @@ pipeline {
             steps {
                 // Deploy application in Kubernetes
                 sh 'kubectl delete ns nginx'
-                sleep 30
                 sh 'kubectl create namespace nginx'
                 sh 'kubectl get ns'
                 
