@@ -60,6 +60,7 @@ rm -rf                        -----------------> to remove or delete
 
 ========================================================================================================================================================
 # githubnotes
+
 -> Git/Github ---> it is source code management tool which helps you to manage the application code.
 -> Git is local repository which is on you local machine.
 -> Github is centralised repository were you need to login using username/passwd.
@@ -476,7 +477,7 @@ What is kubernetes pod?
 -> extral name-----
 
 -> Popular kubernetics distributions
-       -> Kubernetics
+       -> Core Kubernetics
        -> RED HATOpenshift
        -> Rancher
        -> EKS
