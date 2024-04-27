@@ -215,6 +215,7 @@ Docker will only support single application deployment.
 -> Docker engine ---> which containes docker config and which heps to run the docker service
 -> Docker Repository --> were you can store the docker images (here we can do pull/push mechanism)
 -> Docker images -> we can build docker image using docker file 
+
 -> Dockerfile ---> Group of instructions
 
 Docker Commands:
@@ -236,6 +237,12 @@ Docker Commands:
 -> docker stats <containername> ---- you can see the resource utilization cpu/ram/memory   
 -> docker system prune ---- unused images/containers will be deleted
 -> docker run -it --name <containername> --privileged=true --volumes-from <oldcontainer> <images> /bin/bash 
+
+-> dcoker run -d --name mywish -p 8080:8080 "Imagename"    ---> command for deployment of image in container and accessing in browser throuht port
+
+          -d-> want to run in detached mode
+          -p-> for port 8080(this port we can access application in browser) :8080 ( for container port)
+          
 
 **docker hub commands** 
 
@@ -489,7 +496,97 @@ What is PV and PVC?
 -> PV is persistent volumes stoages available for the cluster.
 ->PVC is persistent volume claim storages requested by user for storage which is bound to PV's.
 
-==============================================
+
+Components/Kinds
+->POD
+->DEPLOYMENT
+->VOLUMES(PVC)
+->SERVICES
+->INGRESS
+->SECRETS
+->CONFIGMAPS
+->NAMESPCES
+->STATEFULSET
+
+
+Different YAML files.
+
+pod.yaml*------------> for creating pod
+service.yaml * --------> for creating network 
+deploy.yaml *  --------> for deployment of application
+configmap.yaml* -------> for external configuaration of application
+replicaset.yaml -------> they automatically replace any pods that fail or are terminated (it is like duplicate or backup)
+secret.yaml ----------> is used to store sensitive information, such as passwords, API keys, and other confidential data
+ingress.yaml------------> specifies rules that map HTTP or HTTPS routes to Kubernetes services (www.example.com) and traffic.
+job.yaml
+namespace.yaml
+statefulset.yaml---------> Is used to manage stateful applications, such as databases, where each instance requires a stable, unique identity and stable storage.
+
+
+ 
+------->>*Deploy yaml file*
+
+->Deployments manage the deployment and scaling of a set of pods, usually to run a stateless application.
+->It includes specifications such as the container image, number of replicas.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-app
+  lables:
+    app:my-web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-web-app
+  template:
+    metadata:
+      labels:
+        app: my-web-app
+    spec:
+      containers:
+      - name: my-web-app-container
+        image: my-web-app:latest
+        ports:
+        - containerPort: 80
+
+
+----->>*Service yaml file*
+
+->Services provide network access to a set of pods, allowing them to communicate with each other and with external clients.
+->It includes specifications for how to expose the pods, such as the port number and type of service (e.g., ClusterIP, NodePort, LoadBalancer)
+->Services can be used to load balance traffic across multiple pod replicas and enable external access to the application.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-web-app-service
+spec:
+  selector:
+    app: my-web-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+
+
+---->>*Configmap*
+
+ConfigMaps are used to store configuration data in key-value pairs or as plain text
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  # Define key-value pairs for your configuration data
+  DATABASE_URL: "mysql://username:password@hostname:port/database"
+  API_KEY: "your_api_key_here"
+  LOG_LEVEL: "debug"
+
+=======================================================================================================================================================================
 aws eks update-kubeconfig --region us-east-1 --name demo-eks  -----> command for generating secret key of kubernetics which we should give in jenkins credencials 
 cat <path>
 
@@ -517,82 +614,25 @@ kubectl version --short --client
 eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2
 
 
+=========================================================================================================================
+Kubernetics atchitecture
 
-YAML files
+We are having two types of nodes in a cluster and each node has multiple pods in it.
+1. Master Node
+2. Worker Node
 
-pod.yaml*------------> for creating pod
-service.yaml * --------> for creating network 
-deploy.yaml *
-configmap.yaml*
-replicaset.yaml
-secret.yaml
-ingress.yaml
-job.yaml
-namespace.yaml
+Mater node
+4 processes run every master node
+   1> Api server ( Clusater gateway and acts as a gatekeeper for auth)
+   2> Scheduler  ( by this it sehedules and knows where to put the new pod)
+   3> Control manager  ( detects cluster state changes )
+   4> etcd  ( etcd is cluster brain and cluster changes get stored in the key value store )
 
-
-*Deploy yaml file*
-
-->Deployments manage the deployment and scaling of a set of pods, usually to run a stateless application.
-->It includes specifications such as the container image, number of replicas
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-web-app
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: my-web-app
-  template:
-    metadata:
-      labels:
-        app: my-web-app
-    spec:
-      containers:
-      - name: my-web-app-container
-        image: my-web-app:latest
-        ports:
-        - containerPort: 80
-
-
-*Service yaml file*
-
-->Services provide network access to a set of pods, allowing them to communicate with each other and with external clients.
-->It includes specifications for how to expose the pods, such as the port number and type of service (e.g., ClusterIP, NodePort, LoadBalancer)
-->Services can be used to load balance traffic across multiple pod replicas and enable external access to the application.
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-web-app-service
-spec:
-  selector:
-    app: my-web-app
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
-  type: LoadBalancer
-
-
-*Configmap*
-
-ConfigMaps are used to store configuration data in key-value pairs or as plain text
-
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: my-configmap
-data:
-  # Define key-value pairs for your configuration data
-  DATABASE_URL: "mysql://username:password@hostname:port/database"
-  API_KEY: "your_api_key_here"
-  LOG_LEVEL: "debug"
-
-
-
+Worker node
+Three process must be installed on every Worker node to manage the pods.
+  1> Container Runtime
+  2> Kubelet ( Interacts with both container and node)
+  3) Kube proxy (critical role in enabling communication between pods and services) 
 
 
 
