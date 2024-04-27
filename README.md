@@ -436,8 +436,44 @@ Install helm on linux VM:
 =========================================================================================================================================================================================
 Kubernetes:
 
-connect to cluster
-  aws eks --update-kubeconfig --region=us-east-1 --name=eks   -> to connect to kubernetes cluster
+Cluster > Nodes > Pods > Containers.
+
+-> Popular kubernetics distributions
+
+       -> Core Kubernetics 
+       -> RED HATOpenshift
+       -> Rancher
+       -> EKS
+       -> AKS
+       -> GKE
+       -> MiniKube (use for testing and practice in which master and worker node run on one machine)
+
+what is kubernetes?
+-> which helps you to deploy multiple applications as a containers, auto scaling and manage our applications.
+
+What is kubernetes pod?
+-> Running as a container on kubernete
+
+**What is deployment in kubernetes?**
+-> Deployment is nothing but converts application as a running container and it should manage the roll back machanism.
+
+**what is kubernetes namespace?**
+-> kubernetes namespace which helps you to seperate the multiple application deployments configurations.
+
+**what is kubernetes services?**
+-> Service load balancer ----- which manages the external acces to kubernetes service
+                               feature of load balancer -> SSL, Virtual Hosting, Ingress Routing -> which helps to route the traffic to kubernetes services.
+-> NodePort ---- which helps to access the application from external world and it expose the Node IP address
+                <NodeIP>:<NodePort>
+-> Cluster IP ---- exposes the service on each node based on internal IP address with in the cluster.
+-> extral name-----
+
+What is PV and PVC?
+-> PV is persistent volumes stoages available for the cluster.
+->PVC is persistent volume claim storages requested by user for storage which is bound to PV's.
+
+
+kubectl is the command-line interface (CLI) tool used to interact with Kubernetes clusters. It is used such as deploying applications, managing pods, scaling deployments, inspecting cluster resources, and more. Below are commands.
 
 -> Kubectl get nodes                       -> to see the nodes under kubernetes
 -> kubectl get pods                        -> to see the pods running on cluster
@@ -458,43 +494,6 @@ connect to cluster
 -> kubectl exec -it <podname> bash          -> to login into container
 -> kubectl apply -f deployment.yaml         -> to execute/create the deployment
 -> kubectl apply -f service.yaml            -> to execute/create the service
-
-what is kubernetes?
--> which helps you to deploy multiple applications as a containers, auto scaling and manage our applications.
-
-**What is kubernetes components?**
--> control plane (master node) ----kube API Server, kube Controll manager, kube-scheduler, etcd
--> worker node --- kubelet, kube-proxy, container runtime.
-
-What is kubernetes pod?
--> Running as a container on kubernete
-
-**What is deployment in kubernetes?**
--> Deployment is nothing but converts application as a running container and it should manage the roll back machanism.
-
-**what is kubernetes namespace?**
--> kubernetes namespace which helps you to seperate the multiple application deployments configurations.
-
-**what is kubernetes services?**
--> Service load balancer ----- which manages the external acces to kubernetes service
-                               feature of load balancer -> SSL, Virtual Hosting, Ingress Routing -> which helps to route the traffic to kubernetes services.
--> NodePort ---- which helps to access the application from external world and it expose the Node IP address
-                <NodeIP>:<NodePort>
--> Cluster IP ---- exposes the service on each node based on internal IP address with in the cluster.
--> extral name-----
-
--> Popular kubernetics distributions
-       -> Core Kubernetics
-       -> RED HATOpenshift
-       -> Rancher
-       -> EKS
-       -> AKS
-       -> GKE
-       -> Minicube
-
-What is PV and PVC?
--> PV is persistent volumes stoages available for the cluster.
-->PVC is persistent volume claim storages requested by user for storage which is bound to PV's.
 
 
 Components/Kinds
@@ -615,11 +614,13 @@ eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node
 
 
 =========================================================================================================================
-Kubernetics atchitecture
+Kubernetics atchitecture:-
 
 We are having two types of nodes in a cluster and each node has multiple pods in it.
 1. Master Node
 2. Worker Node
+
+Components:
 
 Mater node
 4 processes run every master node
