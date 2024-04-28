@@ -448,6 +448,32 @@ Cluster > Nodes > Pods > Containers.
        -> GKE
        -> MiniKube (use for testing and practice in which master and worker node run on one machine)
 
+
+Kubernetics atchitecture:-
+
+We are having two types of nodes in a cluster and each node has multiple pods in it.
+   Note: Node is nothing but Virtual machine with ram, cpu and storage (eg. EC2 instance)
+
+1. Master Node ----> It manges the worker node.
+2. Worker Node ----> As application will deploy in pods of worker node only.
+
+Components:
+
+Master node:-
+4 processes run every master node
+   1> Api server ( Cluster gateway and acts as a gatekeeper for auth)
+   2> Control manager  ( detects the cluster state changes )
+   3> etcd  ( etcd is cluster brain and cluster changes get stored in the key value store )
+   4> Scheduler  ( by this it schedules and knows where to put the new pod based on availability and requirement)
+   
+  
+Worker node:-
+Three process must be installed on every Worker node to manage the pods.
+  1> Container Runtime ( Container run time manages container iside the pods)
+  2> Kubelet ( After scheduler decides kubelet wiil create the pod, Interacts with both container and node)
+  3) Kube proxy (critical role in enabling communication and networking between pods and services)
+
+
 what is kubernetes?
 -> which helps you to deploy multiple applications as a containers, auto scaling and manage our applications.
 
