@@ -512,21 +512,24 @@ kubectl is the command-line interface (CLI) tool used to interact with Kubernete
 
 -> Kubectl get nodes                       -> to see the nodes under kubernetes
 -> kubectl get pods                        -> to see the pods running on cluster
--> kubectl create namespace <name>         -> to create namespace in kubernetes cluster
--> kubectl get ns                          -> to see list of namespaces
--> kubectl describe pod <podname>          -> to describe the pods and check the event logs
--> kubectl get svc                         -> to get the list of services
 -> kubectl get deployments                 -> to get the list of deployments
--> kubectl get cm                          -> to get the list of configmaps
 -> kubectl get secrets                     -> to get the list of secrets
+-> kubectl get ns                          -> to see list of namespaces
+-> kubectl get svc                         -> to get the list of services
+-> kubectl get cm                          -> to get the list of configmaps
+-> kubectl get pv                          -> to get the list of persistent volumes
+-> kubectl get pvc                         -> to get the list of persistent volume claims
+
+-> kubectl create namespace <name>         -> to create namespace in kubernetes cluster
+-> kubectl describe pod <podname>          -> to describe the pods and check the event logs
 -> kubectl describe secret <name>          -> to see th full info secret
 -> kubectl logs -f <podname>               -> to see the pod logs
 -> kubectl logs -f <podname> -c <containername> -> to the application logs
 -> kubectl delete pod <podname>             -> to restart the pod/container
 -> kubectl edit deployment <deploymentname> -> to edit the deployment for local changes testing
--> kubectl get PV                           -> to get the list of persistent volumes
--> kubectl get PVC                          -> to get the list of persistent volume claims
--> kubectl exec -it <podname> bash          -> to login into container
+-> kubectl exec -it <podname> /bin/bash          -> to get inside the pod(container)
+
+  To execute or create.
 -> kubectl apply -f deployment.yaml         -> to execute/create the deployment
 -> kubectl apply -f service.yaml            -> to execute/create the service
 
@@ -539,7 +542,8 @@ service.yaml * --------> we create it because each and every pod( like frontend 
 deploy.yaml *  --------> we create for deployment of application
 secret.yaml ----------> we create this file to store sensitive information, such as passwords, API keys, and other confidential data
 configmap.yaml* -------> for external configuaration of application and it contains like "database_url"
-volume.yaml(pv) --------> we create for persistent volumes stoages available for the cluster
+persistentvolume.yaml(pv) --------> we create for persistent volumes stoages available for the cluster
+persistentvolumeclaim.yaml------> 
 replicaset.yaml -------> they automatically replace any pods that fail or are terminated (it is like duplicate or backup)
 ingress.yaml ------------> specifies rules that map HTTP or HTTPS routes to Kubernetes services (www.example.com) and traffic.
 job.yaml
@@ -571,8 +575,8 @@ spec:
         app: my-web-app
     spec:
       containers:
-      - name: my-web-app-container
-        image: my-web-app:latest
+      - name: mywish
+        image: docker image
         ports:
         - containerPort: 80
 
@@ -595,7 +599,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: 8080 
   type: LoadBalancer
 
 
