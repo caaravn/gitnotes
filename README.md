@@ -457,7 +457,6 @@ We are having two types of nodes in a cluster and each node has multiple pods in
 1. Master Node ----> It manges the worker node.
 2. Worker Node ----> As application will deploy in pods of worker node only.
 
-Components:
 
 Master node:-
 4 processes run every master node
@@ -472,6 +471,15 @@ Three process must be installed on every Worker node to manage the pods.
   1> Container Runtime ( Container run time manages container iside the pods)
   2> Kubelet ( After scheduler decides kubelet wiil create the pod, Interacts with both container and node)
   3) Kube proxy (critical role in enabling communication and networking between pods and services)
+
+Architecture work flow-
+1> we get a request to create the application pod
+2> the request goes to API server and gets validated and updates info in etcd
+3> and the request goes to scheduler which decides the suitable node to create the application pod and same updates info in etcd
+4> Now kubelet will cteate the pod
+5> After that kube proxy will enable the network rules for communication
+             If pod gets crashed or any wrong happens
+6> Now control manager identifies the incident and again inform to scheduler for replacement
 
 
 what is kubernetes?
@@ -522,30 +530,21 @@ kubectl is the command-line interface (CLI) tool used to interact with Kubernete
 -> kubectl apply -f service.yaml            -> to execute/create the service
 
 
-Components/Kinds
-->POD
-->DEPLOYMENT
-->VOLUMES(PVC)
-->SERVICES
-->INGRESS
-->SECRETS
-->CONFIGMAPS
-->NAMESPCES
-->STATEFULSET
 
+Different YAML files. (Components/Kinds)
 
-Different YAML files.
-
-pod.yaml*------------> for creating pod
-service.yaml * --------> for creating network 
-deploy.yaml *  --------> for deployment of application
-configmap.yaml* -------> for external configuaration of application
+pod.yaml*------------> we create for creating pods
+service.yaml * --------> we create it because each and every pod( like frontend code pod, backend code pod, database pod) must communicate with each other to run the applicate
+deploy.yaml *  --------> we create for deployment of application
+secret.yaml ----------> we create this file to store sensitive information, such as passwords, API keys, and other confidential data
+configmap.yaml* -------> for external configuaration of application and it contains like "database_url"
+volume.yaml(pv) --------> we create for persistent volumes stoages available for the cluster
 replicaset.yaml -------> they automatically replace any pods that fail or are terminated (it is like duplicate or backup)
-secret.yaml ----------> is used to store sensitive information, such as passwords, API keys, and other confidential data
-ingress.yaml------------> specifies rules that map HTTP or HTTPS routes to Kubernetes services (www.example.com) and traffic.
+ingress.yaml ------------> specifies rules that map HTTP or HTTPS routes to Kubernetes services (www.example.com) and traffic.
 job.yaml
-namespace.yaml
+namespace.yaml ---------->
 statefulset.yaml---------> Is used to manage stateful applications, such as databases, where each instance requires a stable, unique identity and stable storage.
+
 
 
  
@@ -579,6 +578,7 @@ spec:
 
 ----->>*Service yaml file*
 
+->With this 
 ->Services provide network access to a set of pods, allowing them to communicate with each other and with external clients.
 ->It includes specifications for how to expose the pods, such as the port number and type of service (e.g., ClusterIP, NodePort, LoadBalancer)
 ->Services can be used to load balance traffic across multiple pod replicas and enable external access to the application.
@@ -640,26 +640,7 @@ eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node
 
 
 =========================================================================================================================
-Kubernetics atchitecture:-
 
-We are having two types of nodes in a cluster and each node has multiple pods in it.
-1. Master Node
-2. Worker Node
-
-Components:
-
-Mater node
-4 processes run every master node
-   1> Api server ( Clusater gateway and acts as a gatekeeper for auth)
-   2> Scheduler  ( by this it sehedules and knows where to put the new pod)
-   3> Control manager  ( detects cluster state changes )
-   4> etcd  ( etcd is cluster brain and cluster changes get stored in the key value store )
-
-Worker node
-Three process must be installed on every Worker node to manage the pods.
-  1> Container Runtime
-  2> Kubelet ( Interacts with both container and node)
-  3) Kube proxy (critical role in enabling communication between pods and services) 
 
 
 
