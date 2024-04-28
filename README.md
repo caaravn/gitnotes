@@ -447,6 +447,7 @@ Cluster > Nodes > Pods > Containers.
        -> AKS
        -> GKE
        -> MiniKube (use for testing and practice in which master and worker node run on one machine)
+       -> kubeadem
 
 
 Kubernetics atchitecture:-
@@ -580,7 +581,8 @@ spec:
 
 ->With this 
 ->Services provide network access to a set of pods, allowing them to communicate with each other and with external clients.
-->It includes specifications for how to expose the pods, such as the port number and type of service (e.g., ClusterIP, NodePort, LoadBalancer)
+->It includes specifications for how to expose the pods, such as the port number and
+ ->type of service (e.g., ClusterIP, NodePort, LoadBalancer, Ingress)
 ->Services can be used to load balance traffic across multiple pod replicas and enable external access to the application.
 
 apiVersion: v1
