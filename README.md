@@ -529,7 +529,7 @@ kubectl is the command-line interface (CLI) tool used to interact with Kubernete
 -> kubectl edit deployment <deploymentname> -> to edit the deployment for local changes testing
 -> kubectl exec -it <podname> /bin/bash          -> to get inside the pod(container)
 
-  To execute or create.
+  To execute and create.
 -> kubectl apply -f deployment.yaml         -> to execute/create the deployment
 -> kubectl apply -f service.yaml            -> to execute/create the service
 
@@ -546,9 +546,10 @@ persistentvolume.yaml(pv) --------> we create for persistent volumes stoages ava
 persistentvolumeclaim.yaml------> 
 replicaset.yaml -------> they automatically replace any pods that fail or are terminated (it is like duplicate or backup)
 ingress.yaml ------------> specifies rules that map HTTP or HTTPS routes to Kubernetes services (www.example.com) and traffic.
-job.yaml
-namespace.yaml ---------->
+job.yaml     ------------->
+namespace.yaml ----------> to seperate or partition the multiple application deployments configurations.
 statefulset.yaml---------> Is used to manage stateful applications, such as databases, where each instance requires a stable, unique identity and stable storage.
+role.yaml ----------> 
 
 
 
