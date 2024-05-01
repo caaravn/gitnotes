@@ -156,6 +156,8 @@ Maven Tool:
           
 -> using maven we are going to build the application code written by developers
 -> Example after build java code it will generate target folder inside it we have .jar file (target/***.jar)
+ Target folder:- folder where compiled or built artifacts are stored during the build process.
+ 
      This .jar file is called as Artifact/Package
 
      Same as above for .NET, PYTHON, NODEJS -------> We get .ZIP file.
@@ -196,88 +198,32 @@ cd .. (for back)
 
 **after creating the .jar file( artifact) we push the code to package repository tool like Nexus, jfrog**
 
-===================================================================================================================================================================================
-
-What is Docker?
-Docker is light weight container, were you can build and run your application on docker.
-Docker is very fast in build and running application.
-Docker will only support single application deployment.
-
--> hardware-==> kernel OS----->Docker engine---->Application
--> Install docker on linux machine
-    *  yum install docker -y  (Install docker on our VM).
-    *  systemctl start docker  (will start the docker service).
-    *  systemctl enable docker (if we stop the VM docker service also will stop and once VM is start automatically it will start the docker service as well).
-    *  systemctl restart docker (to restart the docker service).
-    * sudo usermod -aG docker jenkins ---------------->  command adds the current user to the docker group, which allows you to run Docker commands without using sudo. Remember to log 
-                                                         out and log back in for the group membership to take effect.
-
--> Docker engine ---> which containes docker config and which heps to run the docker service
--> Docker Repository --> were you can store the docker images (here we can do pull/push mechanism)
--> Docker images -> we can build docker image using docker file 
-
--> Dockerfile ---> Group of instructions
-
-Docker Commands:
--> **Docker info** ---- we can see the config/details about docker
--> **Docker images** ---- to see list of docker images
--> **Docker rmi <imagename>** --- to delete specific docker image
--> **Docker build -t <imagename> .** ----to build docker image from dockerfile
-
--> docker ps --- it will show the running containers
--> docker ps -a -- it will show both stop and running containers.
---> docker start <containerid>  ------> to start the container
--> docker stop <containerid>  ------> to stop the container
--> docker rm <containername> --- delete docker container (make sure container should be in stop state)
--> docker run -it --name <containername mywish> <imagename> /bin/bash ---> to create container and naming it
--> docker commit <containerid> <newinage mywish> ---- from this we can build new docker image from existing image
--> docker logs -f <containername> ----- to see container logs
--> docker exec -it <containername> sh  ------ to login into container 
--> exit ----> for coming out from container
--> docker stats <containername> ---- you can see the resource utilization cpu/ram/memory   
--> docker system prune ---- unused images/containers will be deleted
--> docker run -it --name <containername> --privileged=true --volumes-from <oldcontainer> <images> /bin/bash 
-
--> dcoker run -d --name mywish -p 8080:8080 "Imagename"    ---> command for deployment of image in container and accessing in browser throuht port
-
-          -d-> want to run in detached mode
-          -p-> for port 8080(this port we can access application in browser) :8080 ( for container port)
-          
-
-**docker hub commands** 
-
-docker run <ubantu>  -------> it will pull image from docker hub and creat container too
-
-docker pull <ubantu> --------> it will only pull image from docker hub
-
-
 
 ======================================================================================================================================================================================
+Jenkins:- 
 
-# Jenkins-notes
-**Download and install jenkins on linux**
+Continious integration:
+1> Code checkout ---> cloning repo and downloading repository and pushing back with same changes.
+2> Build and unit test-----> Compile (from gb's to mb's) the code we use maven tool and generate war or jar file in the target folder
+3> Code scan------> Sonarqube scans the code to find bugs, vurnabilities, static code and code related isses
+4> Image build ----> With docker we create image
 
--> sudo dnf update -y                     ----------------------> for updating any dipendenciess
--> sudo dnf install java-17-amazon-corretto -y
--> sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
--> sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key 
--> sudo dnf install jenkins -y
--> sudo systemctl enable jenkins
--> sudo systemctl start jenkins
--> open your web browser and access Jenkins by navigating to:
-         http://your_amazon_linux_instance_ip:8080
--> sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Continious deployment:
+If the application successfully passes all tests and validations, it is deployed to the production environment.
+As in the kubernetics cluster is created with nodes and in the nodes differtent servies of pods are created and inside the pods we 
+have containers where image(package) is deployed into those containers.
+Through port and ip address we can access the application in the browser.
 
--> new item -> name -> pipeline -> pipeline script -> apply -> save -> Build Now -> logs -> console output.
 
- Sample pipeline code
-
- refer in ----> Jenkinsfile (same repo)
-
-============================================================================================================================================================
+ We have two types of pipe line 
+ 1. Scripted pipeline:- It provide lot of flexibility and control over the work flow.
+                        This pipeline are used when you have complex build.
+    
+ 2. Declarative pipeline:- It is more structured and simple syntax for defining pipeline.
+                           As this is not best choise with complex logic.
+       
  Jenkins pipeline (Declarative pipeline)
-
+ 
 1)pipeline
 2)Agent (any or VM name)
 3)Stages
@@ -357,6 +303,25 @@ pipeline {
 }
 
 
+**Download and install jenkins on linux**
+
+-> sudo dnf update -y                     ----------------------> for updating any dipendenciess
+-> sudo dnf install java-17-amazon-corretto -y
+-> sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+-> sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key 
+-> sudo dnf install jenkins -y
+-> sudo systemctl enable jenkins
+-> sudo systemctl start jenkins
+-> open your web browser and access Jenkins by navigating to:
+         http://your_amazon_linux_instance_ip:8080
+-> sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+-> new item -> name -> pipeline -> pipeline script -> apply -> save -> Build Now -> logs -> console output.
+
+ Sample pipeline code
+
+ refer in ----> Jenkinsfile (same repo)
 ======================================================================================================================================================================================
 
 **SonarQube** -> Security tool - https://techexpert.tips/sonarqube/sonarqube-scanner-installation-ubuntu-linux/ 
@@ -432,6 +397,58 @@ Install helm on linux VM:
 - sudo curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 - sudo chmod 700 get_helm.sh
 - sudo ./get_helm.sh
+=======================================================================================================================================================================================
+What is Docker?
+Docker is light weight container, were you can build and run your application on docker.
+Docker is very fast in build and running application.
+Docker will only support single application deployment.
+
+-> hardware-==> kernel OS----->Docker engine---->Application
+-> Install docker on linux machine
+    *  yum install docker -y  (Install docker on our VM).
+    *  systemctl start docker  (will start the docker service).
+    *  systemctl enable docker (if we stop the VM docker service also will stop and once VM is start automatically it will start the docker service as well).
+    *  systemctl restart docker (to restart the docker service).
+    * sudo usermod -aG docker jenkins ---------------->  command adds the current user to the docker group, which allows you to run Docker commands without using sudo. Remember to log 
+                                                         out and log back in for the group membership to take effect.
+
+-> Docker engine ---> which containes docker config and which heps to run the docker service
+-> Docker Repository --> were you can store the docker images (here we can do pull/push mechanism)
+-> Docker images -> we can build docker image using docker file 
+
+-> Dockerfile ---> Group of instructions
+
+Docker Commands:
+-> **Docker info** ---- we can see the config/details about docker
+-> **Docker images** ---- to see list of docker images
+-> **Docker rmi <imagename>** --- to delete specific docker image
+-> **Docker build -t <imagename> .** ----to build docker image from dockerfile
+
+-> docker ps --- it will show the running containers
+-> docker ps -a -- it will show both stop and running containers.
+--> docker start <containerid>  ------> to start the container
+-> docker stop <containerid>  ------> to stop the container
+-> docker rm <containername> --- delete docker container (make sure container should be in stop state)
+-> docker run -it --name <containername mywish> <imagename> /bin/bash ---> to create container and naming it
+-> docker commit <containerid> <newinage mywish> ---- from this we can build new docker image from existing image
+-> docker logs -f <containername> ----- to see container logs
+-> docker exec -it <containername> sh  ------ to login into container 
+-> exit ----> for coming out from container
+-> docker stats <containername> ---- you can see the resource utilization cpu/ram/memory   
+-> docker system prune ---- unused images/containers will be deleted
+-> docker run -it --name <containername> --privileged=true --volumes-from <oldcontainer> <images> /bin/bash 
+
+-> dcoker run -d --name mywish -p 8080:8080 "Imagename"    ---> command for deployment of image in container and accessing in browser through the given port
+
+          -d-> want to run in detached mode
+          -p-> for port 8080(this port we can access application in browser) :8080 ( for container port)
+          
+
+**docker hub commands** 
+
+docker run <ubantu>  -------> it will pull image from docker hub and creat container too
+
+docker pull <ubantu> --------> it will only pull image from docker hub
 
 =========================================================================================================================================================================================
 Kubernetes:
@@ -512,6 +529,7 @@ kubectl is the command-line interface (CLI) tool used to interact with Kubernete
 
 -> Kubectl get nodes                       -> to see the nodes under kubernetes
 -> kubectl get pods                        -> to see the pods running on cluster
+-> kubectl get pods -o wide                -> detail info of pods
 -> kubectl get deployments                 -> to get the list of deployments
 -> kubectl get secrets                     -> to get the list of secrets
 -> kubectl get ns                          -> to see list of namespaces
@@ -529,7 +547,8 @@ kubectl is the command-line interface (CLI) tool used to interact with Kubernete
 -> kubectl edit deployment <deploymentname> -> to edit the deployment for local changes testing
 -> kubectl exec -it <podname> /bin/bash          -> to get inside the pod(container)
 
-  To execute and create.
+  To execute and create. (note:- instead of appliying this comands manually we use jenkins tool to automate)
+  for each and every yaml file we do the same command.
 -> kubectl apply -f deployment.yaml         -> to execute/create the deployment
 -> kubectl apply -f service.yaml            -> to execute/create the service
 
@@ -537,14 +556,15 @@ kubectl is the command-line interface (CLI) tool used to interact with Kubernete
 
 Different YAML files. (Components/Kinds)
 
+deployment.yaml *  --------> we create for deployment of application
+        Below yaml files which we can include in deployment.yaml file or we can manintain saperate.
+     -> replicaset.yaml -------> they automatically replace any pods that fail or are terminated (it is like duplicate or backup), basically count
 pod.yaml*------------> we create for creating pods
 service.yaml * --------> we create it because each and every pod( like frontend code pod, backend code pod, database pod) must communicate with each other to run the applicate
-deploy.yaml *  --------> we create for deployment of application
 secret.yaml ----------> we create this file to store sensitive information, such as passwords, API keys, and other confidential data
 configmap.yaml* -------> for external configuaration of application and it contains like "database_url"
 persistentvolume.yaml(pv) --------> we create for persistent volumes stoages available for the cluster
 persistentvolumeclaim.yaml------> 
-replicaset.yaml -------> they automatically replace any pods that fail or are terminated (it is like duplicate or backup)
 ingress.yaml ------------> specifies rules that map HTTP or HTTPS routes to Kubernetes services (www.example.com) and traffic.
 job.yaml     ------------->
 namespace.yaml ----------> to seperate or partition the multiple application deployments configurations.
@@ -562,11 +582,11 @@ role.yaml ---------->
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-web-app
+  name: <name of the deployment application that we are going to create>
   lables:
     app:my-web-app
 spec:
-  replicas: 3
+  replicas: 3 ---> No. of pods
   selector:
     matchLabels:
       app: my-web-app
@@ -576,8 +596,8 @@ spec:
         app: my-web-app
     spec:
       containers:
-      - name: mywish
-        image: docker image
+      - name: < name of the container>
+        image: <docker image>
         ports:
         - containerPort: 80
 
