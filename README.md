@@ -668,7 +668,30 @@ eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node
 
 =========================================================================================================================
 
+S3 STORAGE
+         It is a scable cloud storage service provided by amazon web servie for storing and retreving data.
 
+Note : Bucket name should be unique but folder name can be same
+
+As S3 can be use for hosting static websites 
+Two types of websites we have
+
+1. Dynamic website ---> In dynamic websites content changes based on users ( Instagram profiles of each person)
+
+2. Static website-----> But in static website content will be same for every person ( Enadu newspaper site)
+                            Using FRONT END languages code we can host the content in static website
+                              eg: HTML, CSS, JS, JQery, Angular, React, etc
+
+
+
+
+
+
+
+
+
+
+                             
 
 
 
