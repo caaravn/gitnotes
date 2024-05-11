@@ -671,6 +671,16 @@ eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node
 S3 STORAGE
          It is a scable cloud storage service provided by amazon web servie for storing and retreving data.
 
+AWS global wise division.
+25 regions 
+80 availability zones
+Eg: In Mumbai region (Clustered data centers) we have 3 Availabity zones(AZ) (Isolated group of data centers)
+1. North America(NA)
+2. South America(SA)
+3. Europe (EU)
+4. Africa (AF)
+5. Asia and Australia (AP) Asia pasific
+
 Note : Bucket name should be unique but folder name can be same
 
 As S3 can be use for hosting static websites 
