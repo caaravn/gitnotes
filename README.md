@@ -686,12 +686,32 @@ Note : Bucket name should be unique but folder name can be same
 As S3 can be use for hosting static websites 
 Two types of websites we have
 
-1. Dynamic website ---> In dynamic websites content changes based on users ( Instagram profiles of each person)
+1. Dynamic website ---> In dynamic websites content changes based on users ( Instagram profiles of each person data is different)
 
 2. Static website-----> But in static website content will be same for every person ( Enadu newspaper site)
                             Using FRONT END languages code we can host the content in static website
                               eg: HTML, CSS, JS, JQery, Angular, React, etc
 
+
+STORAGE CLASSES
+
+Each storage has different cost
+
+.Frequently accessed storage 
+    ---->1) Standard storage ( stores greater than equal to 3 and above zones)
+    ---->2) Reduced redundant storage
+
+.Infrequently accessed storage
+    -----> 3)Standard Infrequently accessed ( stores greater than equal to 3 and above zones)
+    -----> 4)One zone infrequently accessed ( stores only in one zone)
+
+.Archival storage
+    ------> 5)Glacier (data stored in compression formate) ( stores greater than equal to 3 and above zones)
+    ------> 6)Glacier deep archival (data stored in deep compression formate) ( stores greater than equal to 3 and above zones)
+
+7. Intelligent (may be freq or infreq AWS decides)
+
+Retreval fee (A fee for downloading)
 
 
 
