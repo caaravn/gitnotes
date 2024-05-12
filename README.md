@@ -682,6 +682,7 @@ Eg: In Mumbai region (Clustered data centers) we have 3 Availabity zones(AZ) (Is
 5. Asia and Australia (AP) Asia pasific
 
 Note : Bucket name should be unique but folder name can be same
+Retreval fee (A fee for downloading)
 
 As S3 can be use for hosting static websites 
 Two types of websites we have
@@ -711,7 +712,16 @@ Each storage has different cost
 
 7. Intelligent (may be freq or infreq AWS decides)
 
-Retreval fee (A fee for downloading)
+
+
+S3 security:
+1.Encryption  ------> for this security we have S3 SSE(Server side encryption)
+2.Access permission ----> for this security we have
+                            1. Bucket policy
+                            2. ACL(Access control list)
+                                   i)ACL at bucket level
+                                   ii)ACL at object level
+                            3.Presigned URL's   
 
 
 
