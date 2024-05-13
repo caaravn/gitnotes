@@ -727,8 +727,19 @@ S3 security:
 
 
 
+=============================================================================================================================================================================
+LAMDA function
 
+Like s3 bucket ===> solves the problem of storage
+like LAMDA function ====> Solves the problem of serverless
 
+Note : ->EC2 and LAMBA both belongs to compute family but feature are some different
+       ->Serverless computing on AWS allows developers to build and run applications and server without thinking about server. As AWS lamda is a key service in this model
+          where you can upload your code and lambda automatically manages the execution, scaling and availability.
+       
+
+As in EC2 we need to mention IMAGE, INSTANCE TYPE, MEMORY REQ, CPU REQ, SECURITY
+But in LAMDA  AWS will automatically will take the above details base on that, application you want to run.
 
 
 
