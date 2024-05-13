@@ -569,7 +569,7 @@ ingress.yaml ------------> specifies rules that map HTTP or HTTPS routes to Kube
 job.yaml     ------------->
 namespace.yaml ----------> to seperate or partition the multiple application deployments configurations.
 statefulset.yaml---------> Is used to manage stateful applications, such as databases, where each instance requires a stable, unique identity and stable storage.
-role.yaml ----------> 
+role.yaml ---------->  
 
 
 
@@ -697,7 +697,7 @@ Two types of websites we have
 
 STORAGE CLASSES
 
-Each storage has different cost
+Each storage has different cost.
 
 .Frequently accessed storage 
     ---->1) Standard storage ( stores greater than equal to 3 and above zones)
