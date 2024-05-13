@@ -441,7 +441,7 @@ Docker Commands:
 -> dcoker run -d --name mywish -p 8080:8080 "Imagename"    ---> command for deployment of image in container and accessing in browser through the given port
 
           -d-> want to run in detached mode
-          -p-> for port 8080(this port we can access application in browser) :8080 ( for container port)
+          -p-> for port 8080(this port we can access application in browser) :8080 (for container port)
           
 
 **docker hub commands** 
@@ -642,27 +642,28 @@ data:
 aws eks update-kubeconfig --region us-east-1 --name demo-eks  -----> command for generating secret key of kubernetics which we should give in jenkins credencials 
 cat <path>
 
-Installation of EKS in linux server
+Installation of EKS in linux server using EC2 instance
 
-#Install AWS CLI
+1>#Install AWS CLI
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 
 sudo yum install unzip
 sudo unzip awscliv2.zip  
 sudo ./aws/install
 aws --version
 
-#Install eksctl on Linux
+2>#Install eksctl 
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 #Move the extracted binary to /usr/local/bin. 
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
 
-#Install Kubectl
+3>#Install Kubectl
 sudo curl --silent --location -o /usr/local/bin/kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
 sudo chmod +x /usr/local/bin/kubectl
 kubectl version --short --client
 
 #Create EKS cluster using eksctl command
+
 eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2
 
 
