@@ -81,6 +81,7 @@ rm -rf                        -----------------> to remove or delete
      
      git add .      -> . indicates all files
      git commit -m "message" -> (-m is message)
+   
      git push origin branchname  ->push code to github.
      
      git status  -> to see the status before and after command exection for both add&commit.
@@ -99,7 +100,7 @@ rm -rf                        -----------------> to remove or delete
              Stage  5) hotfix branch -> any minor and immediate change of code
              
          
-
+     
      git branch <bname> --> to create branch 
      git checkout <bname>  -> switch from one to another branch
                 Above two (OR) below one (same)
@@ -552,6 +553,29 @@ kubectl is the command-line interface (CLI) tool used to interact with Kubernete
 -> kubectl apply -f deployment.yaml         -> to execute/create the deployment
 -> kubectl apply -f service.yaml            -> to execute/create the service
 
+==============================================================================================================================================================
+Office
+-->kubectl -n sit3 get xxx
+--> kubectl -n sit3 edit  xxx
+--> kubectl -n sit3 logs -f  xxx
+--> kubectl -n sit3 scale  xxx
+
+
+
+--> kubectl -n sit3 get deployment---> for getting list of deployments in sit3 env
+--> kubectl -n sit3 edit deployment <dep name>  ---> for editing any deployment of any env
+--> kubectl -n sit3 logs -f <name of ms> ----> to check the logs of particular microservice
+--> kubectl -n sit3 get sts   ------> to get the statefullset
+--> kubectl -n sit3 edit deployment <sts name> ----> for editing any statefullset of any env
+--> kubectl -n sit3 get pv   ------> to get the persistent volume
+--> kubectl -n sit3 scale deployment <deplo name> -replicas=2  -----> to scaleup the pods
+
+
+===============================================================================================================================================================
+Namespaces:
+      In kubernetics namespaces are a way to create virtual clusters within a physical cluster.They provide a way to divide cluster resources into logical
+groups, enabling multiple teams or applications to coexist and operate independetly within the same kubernetics cluster.
+
 
 
 Different YAML files. (Components/Kinds)
@@ -561,6 +585,7 @@ deployment.yaml *  --------> we create for deployment of application
      -> replicaset.yaml -------> they automatically replace any pods that fail or are terminated (it is like duplicate or backup), basically count
 pod.yaml*------------> we create for creating pods
 service.yaml * --------> we create it because each and every pod( like frontend code pod, backend code pod, database pod) must communicate with each other to run the applicate
+Ingress.yaml ---------> we create it to define how external HTTP and HTTPS traffic should be routed to services within the cluster
 secret.yaml ----------> we create this file to store sensitive information, such as passwords, API keys, and other confidential data
 configmap.yaml* -------> for external configuaration of application and it contains like "database_url"
 persistentvolume.yaml(pv) --------> we create for persistent volumes stoages available for the cluster
@@ -664,8 +689,8 @@ kubectl version --short --client
 
 #Create EKS cluster using eksctl command
 
-eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2
-
+eksctl create cluster --name XXXX --region XXXX --nodegroup-name my-nodes --node-type t3.small --managed --nodes
+===================================================================================================================================
 
 =========================================================================================================================
 
